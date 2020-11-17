@@ -1,0 +1,30 @@
+<div class="container p-5">
+
+  <div class="d-flex justify-content-between">
+    <h1><%= @task.title %></h1>
+
+    <div>
+      <%= link_to "Edit", edit_task_path(@task), class: "btn btn-primary"%>
+      <%= link_to "Delete this task",
+              task_path(@task),
+              method: :delete,
+              data: { confirm: "Are you sure?" },
+              class:"btn btn-secondary" %>
+    </div>
+  </div>
+
+  <p><%= @task.details%></p>
+
+  <% if @task.completed? %>
+    <p class="alert-success">
+      <i class='far fa-check-square'></i> This task is completed
+    </p>
+  <% else %>
+    <p class="alert-warning">
+      <i class='far fa-square'></i> This task is not completed yet
+    </p>
+  <% end %>
+
+  <%= link_to "Back to list", "/tasks" %>
+</div>
+
